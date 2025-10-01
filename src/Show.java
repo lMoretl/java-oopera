@@ -37,16 +37,26 @@ public class Show {
     }
 
     public void replaceActor(Actor newActor, String surnameToReplace) {
+        int foundIndex = -1;
+        int count = 0;
+
         for (int i = 0; i < listOfActors.size(); i++) {
-            Actor current = listOfActors.get(i);
-            if (current.surname.equals(surnameToReplace)) {
-                listOfActors.set(i, newActor);
-                System.out.println("В \"" + title + "\" актёр " + surnameToReplace +
-                        " заменён на " + newActor);
-                return;
+            if (listOfActors.get(i).surname.equals(surnameToReplace)) {
+                foundIndex = i;
+                count++;
             }
         }
-        System.out.println("Актёр с фамилией \"" + surnameToReplace +
-                "\" не найден в \"" + title + "\".");
+
+        if (count == 0) {
+            System.out.println("Актёр с фамилией \"" + surnameToReplace +
+                    "\" не найден в \"" + title + "\".");
+        } else if (count > 1) {
+            System.out.println("Найдено несколько актёров с фамилией \"" +
+                    surnameToReplace + "\". Замена не выполнена.");
+        } else {
+            listOfActors.set(foundIndex, newActor);
+            System.out.println("В \"" + title + "\" актёр с фамилией \"" +
+                    surnameToReplace + "\" заменён на " + newActor);
+        }
     }
 }

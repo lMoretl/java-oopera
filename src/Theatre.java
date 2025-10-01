@@ -8,11 +8,28 @@ public class Theatre {
         Director d1 = new Director("Сергей", "Орлов", Gender.MALE, 15);
         Director d2 = new Director("Анна", "Власова", Gender.FEMALE, 8);
 
+        Person composer = new Person("Пётр", "Чайковский", Gender.MALE);
+        Person choreographer = new Person("Мариус", "Петипа", Gender.MALE);
+
         Show drama = new Show("Гроза", 120, d1);
-        Opera opera = new Opera("Травиата", 150, d2,
-                "Джузеппе Верди", "История любви Виолетты и Альфредо", 30);
-        Ballet ballet = new Ballet("Лебединое озеро", 140, d1,
-                "Пётр Чайковский", "История Одиллии и Зигфрида", "Мариус Петипа");
+
+        Opera opera = new Opera(
+                "Травиата",
+                150,
+                d2,
+                new Person("Джузеппе", "Верди", Gender.MALE),
+                "История любви Виолетты и Альфредо",
+                30
+        );
+
+        Ballet ballet = new Ballet(
+                "Лебединое озеро",
+                140,
+                d1,
+                composer,
+                "История Одиллии и Зигфрида",
+                choreographer
+        );
 
         drama.addActor(a1);
         drama.addActor(a2);
